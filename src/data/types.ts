@@ -29,6 +29,10 @@ export interface Creator {
 export interface Campaign {
   name: string
   status: 'active' | 'draft' | 'wrapped'
+  /** Display string for the list card, e.g. "Jul 15, 2026". */
+  launchDate?: string
+  /** Short descriptor shown under the title on the list card. */
+  tag?: string
   dayOfPlan: number
   planLength: number
   industryAverageDays: number

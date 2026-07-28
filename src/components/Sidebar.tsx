@@ -10,7 +10,7 @@ const NAV = [
   { label: 'UGC', icon: ICON.navUgc, active: false },
 ]
 
-export function Sidebar() {
+export function Sidebar({ onCampaignsClick }: { onCampaignsClick?: () => void }) {
   return (
     <aside
       className="relative w-[296px] shrink-0 overflow-hidden border-r-[0.5px] border-default-border-base bg-white"
@@ -44,6 +44,11 @@ export function Sidebar() {
                 <a
                   href="#main"
                   aria-current="page"
+                  onClick={(e) => {
+                    if (!onCampaignsClick) return
+                    e.preventDefault()
+                    onCampaignsClick()
+                  }}
                   className="flex h-[48px] w-full items-center gap-[16px] rounded-[12px] bg-accent-bg-light px-[16px] py-[12px]"
                 >
                   <img src={item.icon} alt="" className="block size-[24px] max-w-none shrink-0" />

@@ -1,16 +1,28 @@
 import { Chevron, ICON } from './icons'
 
-export function TopBar({ title, status }: { title: string; status: 'active' | 'draft' | 'wrapped' }) {
+export function TopBar({
+  title,
+  status,
+  onBack,
+}: {
+  title: string
+  status: 'active' | 'draft' | 'wrapped'
+  onBack?: () => void
+}) {
   const statusLabel = { active: 'Active', draft: 'Draft', wrapped: 'Wrapped' }[status]
 
   return (
     <header className="h-[165px] shrink-0 border-b border-hairline bg-white">
       <div className="mx-auto h-full w-full max-w-[1216px] pl-[32px] pr-[28px]">
         {/* Breadcrumb — 20px tall block at y=32 */}
-        <a href="#main" className="mt-[32px] flex h-[20px] w-fit items-center gap-[8px]">
+        <button
+          type="button"
+          onClick={onBack}
+          className="mt-[32px] flex h-[20px] w-fit items-center gap-[8px]"
+        >
           <Chevron dir="left" />
           <span className="text-[14px] tracking-[-0.15px] text-default-text-medium">Campaigns</span>
-        </a>
+        </button>
 
         {/* Title row — 40px tall block at y=68 */}
         <div className="mt-[16px] flex h-[40px] items-center justify-between">

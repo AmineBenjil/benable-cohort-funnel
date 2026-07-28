@@ -7,8 +7,11 @@
  */
 import checkCircle from '../assets/icons/check-circle.svg'
 import chevron from '../assets/icons/chevron.svg'
+import dot4 from '../assets/icons/dot-4.svg'
 import dotAll from '../assets/icons/dot-all.svg'
+import edit from '../assets/icons/edit.svg'
 import eye from '../assets/icons/eye.svg'
+import hourglass from '../assets/icons/hourglass.svg'
 import group from '../assets/icons/group.svg'
 import insight from '../assets/icons/insight.svg'
 import invites from '../assets/icons/invites.svg'
@@ -22,8 +25,11 @@ import tabDot from '../assets/icons/tab-dot.svg'
 export const ICON = {
   checkCircle,
   chevron,
+  dot4,
   dotAll,
+  edit,
   eye,
+  hourglass,
   group,
   insight,
   invites,

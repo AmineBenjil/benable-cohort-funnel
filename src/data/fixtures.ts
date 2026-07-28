@@ -66,6 +66,8 @@ function campaign(over: Partial<Campaign>, creators: Creator[]): Campaign {
   return {
     name: 'Pikora Instant Bone Broth Collection',
     status: 'active',
+    launchDate: 'July 6',
+    tag: 'Gifted campaign',
     dayOfPlan: 30,
     planLength: 30,
     industryAverageDays: 67,
@@ -272,3 +274,9 @@ export const SCENARIOS: Scenario[] = [
 ]
 
 export const DEFAULT_SCENARIO = 'mid'
+
+/** Countdown for the locked "next campaign" card on the list view. */
+export const NEXT_CAMPAIGN = {
+  unlockInDays: 23,
+  unlockDate: 'Aug 20, 2026',
+}

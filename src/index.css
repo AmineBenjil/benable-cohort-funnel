@@ -90,6 +90,19 @@
   );
 }
 
+@utility shimmer-accent {
+  /* Purple-and-white sweep for the campaign progress fill — same keyframes as
+     the grey skeleton shimmer, recoloured to the accent. */
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-text) 25%,
+    #d6cbff 37%,
+    var(--color-accent-text) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 2s ease infinite;
+}
+
 @utility shimmer {
   background: linear-gradient(90deg, #ededed 25%, #f6f6f6 37%, #ededed 63%);
   background-size: 400% 100%;

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { CampaignListPage } from './components/CampaignListPage'
 import { CohortFunnelBar } from './components/CohortFunnelBar'
 import { CreatorTable } from './components/CreatorTable'
 import { PrototypeFab } from './components/PrototypeFab'
@@ -15,6 +16,9 @@ import type { VersionId } from './data/versions'
 import { useCampaignFunnel } from './hooks/useCampaignFunnel'
 
 export default function App() {
+  const [view, setView] = useState<'list' | 'detail'>('list')
+  // The brand's own name for the campaign, set inline on the list card.
+  const [campaignName, setCampaignName] = useState('')
   const [version, setVersion] = useState<VersionId>('v1')
   const [scenarioId, setScenarioId] = useState(DEFAULT_SCENARIO)
   const [fabOpen, setFabOpen] = useState(false)
@@ -74,10 +78,25 @@ export default function App() {
           scroll from <main> and drag the sidebar and header along with it. */}
       <div className="flex min-h-0 flex-1 overflow-x-auto overflow-y-hidden bg-canvas">
         <div className="flex min-h-0 min-w-[1512px] flex-1">
-          <Sidebar />
+          <Sidebar onCampaignsClick={() => setView('list')} />
 
+          {view === 'list' ? (
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+              <CampaignListPage
+                campaign={campaign}
+                funnel={funnel}
+                campaignName={campaignName}
+                onRenameCampaign={setCampaignName}
+                onOpenCampaign={() => setView('detail')}
+              />
+            </div>
+          ) : (
           <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-            <TopBar title={campaign.name} status={campaign.status} />
+            <TopBar
+              title={campaign.name}
+              status={campaign.status}
+              onBack={() => setView('list')}
+            />
 
             <main id="main" className="min-h-0 flex-1 overflow-y-auto">
               <div className="mx-auto w-full max-w-[1216px] pb-[64px] pl-[32px] pr-[28px] pt-[24px]">
@@ -129,6 +148,7 @@ export default function App() {
               </div>
             </main>
           </div>
+          )}
         </div>
       </div>
 
